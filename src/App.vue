@@ -13,6 +13,8 @@
 
 <script setup lang="ts">
 import Content from "./components/Content.vue";
+
+
 </script>
 
 <style></style>

@@ -13,13 +13,20 @@
 </template>
 
 <script setup lang="ts">
-
-import {ref} from "vue";
+import { ref } from "vue";
+import { useTodoStore } from "../store/todos.ts";
 
 const text = ref('')
+const useTodo = useTodoStore()
+
 
 const addTodo = () => {
-  console.log(text.value)
+  const newTodo = {
+    id: useTodo.nextId,
+    title: text.value,
+    is_finished: false
+  }
+  useTodo.addTodo(newTodo)
   text.value = ''
 }
 
