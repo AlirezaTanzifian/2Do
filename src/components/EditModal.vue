@@ -6,9 +6,9 @@
     </div>
     <template #footer>
       <AButton key="back" @click="handleCancel">cancel</AButton>
-      <CustomBtn class="bg-purple-500" size="middle" type="primary" @click="handleSave"
-        >save</CustomBtn
-      >
+      <CustomBtn class="bg-purple-500" size="middle" type="primary" @click="handleSave">
+        save
+      </CustomBtn>
     </template>
   </AModal>
 </template>
