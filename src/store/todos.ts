@@ -3,14 +3,7 @@ import { computed, ref } from "vue";
 import { Todo } from "../model/todo.ts";
 
 export const useTodoStore = defineStore('todos', () => {
-    const todos = ref<Todo[]>([
-        { id: 1, title: 'this is a test', is_finished: false },
-        { id: 2, title: 'this is a test 2', is_finished: true },
-        { id: 3, title: 'this is a test 3', is_finished: false },
-        { id: 4, title: 'this is a test 4', is_finished: true },
-        { id: 5, title: 'this is a test 5', is_finished: false },
-        { id: 6, title: 'this is a test 6', is_finished: true },
-    ])
+    const todos = ref<Todo[]>([])
 
     const nextId = computed(() => {
         return todos.value.length + 1
@@ -19,6 +12,11 @@ export const useTodoStore = defineStore('todos', () => {
     const addTodo = (todo: Todo): void => {
         todos.value.push(todo)
         setLocalStorage()
+    }
+
+    const editTodo = (id: number, title: string) => {
+        const index = todos.value.findIndex((item: Todo) => item.id === id)
+        todos.value[index].title = title
     }
 
     const allTodos = computed(() => {
@@ -66,6 +64,7 @@ export const useTodoStore = defineStore('todos', () => {
         todos,
         nextId,
         addTodo,
+        editTodo,
         allTodos,
         doneTodos,
         changeTodoStatus,

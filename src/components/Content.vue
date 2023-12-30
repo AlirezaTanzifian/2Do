@@ -5,8 +5,18 @@
         <div class="h-fit flex gap-2 md:justify-center overflow-x-auto no-scrollbar">
           <CounterTag title="All Tasks" :count="useTodo.allTodos" />
           <CounterTag title="Tasks Done" :count="useTodo.doneTodos" />
-          <CustomBtn title="All Tasks" icon="fa fa-trash" @click="useTodo.deleteAllTodos" />
-          <CustomBtn title="Tasks Done" icon="fa fa-trash" @click="useTodo.deleteDoneTodos" />
+          <CustomBtn
+              class="bg-purple-500"
+              icon="fa fa-trash"
+              type="primary"
+              @click="useTodo.deleteAllTodos"
+          >All Tasks</CustomBtn>
+          <CustomBtn
+              class="bg-purple-500"
+              icon="fa fa-trash"
+              type="primary"
+              @click="useTodo.deleteDoneTodos"
+          >Tasks Done</CustomBtn>
         </div>
       </div>
       <div class="h-48 flex flex-col gap-4 overflow-y-auto px-4">

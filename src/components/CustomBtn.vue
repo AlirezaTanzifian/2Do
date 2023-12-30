@@ -1,23 +1,25 @@
 <template>
-  <div
-      class="flex items-center p-1 bg-purple-400 text-white rounded-lg flex gap-1 hover:bg-purple-500 transition cursor-pointer"
-  >
-    <span class="px-2" v-if="props.icon">
-      <i class="fa fa-trash-o text-white" aria-hidden="true"></i>
-    </span>
-    <span class="mr-1 whitespace-nowrap">{{ props.title }}</span>
-  </div>
+  <AButton :type="props.type" :size="props.size">
+    <div class="flex items-center gap-2">
+      <i class="text-white" :class="props.icon" aria-hidden="true" v-if="props.icon"></i>
+      <slot></slot>
+    </div>
+  </AButton>
 </template>
 
 
 <script setup lang="ts">
 
 interface Props {
-  title: string
   icon?: string
+  size?: string
+  type?: string
 }
 
-const props = withDefaults(defineProps<Props>(), {})
+const props = withDefaults(defineProps<Props>(), {
+  size: 'large',
+  type: 'default'
+})
 
 </script>
 
