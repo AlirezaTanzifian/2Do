@@ -6,17 +6,18 @@
     </div>
     <template #footer>
       <AButton key="back" @click="handleCancel">cancel</AButton>
-      <CustomBtn class="bg-purple-500" size="middle" type="primary" @click="handleSave">save</CustomBtn>
+      <CustomBtn class="bg-purple-500" size="middle" type="primary" @click="handleSave"
+        >save</CustomBtn
+      >
     </template>
   </AModal>
 </template>
 
 <script setup lang="ts">
-
-import { Todo } from "../model/todo.ts";
-import {onMounted, ref} from "vue";
-import CustomBtn from "./CustomBtn.vue";
-import {useTodoStore} from "../store/todos.ts";
+import { Todo } from '../model/todo.ts'
+import { onMounted, ref } from 'vue'
+import CustomBtn from './CustomBtn.vue'
+import { useTodoStore } from '../store/todos.ts'
 
 interface Props {
   show: boolean
@@ -26,10 +27,10 @@ const props = withDefaults(defineProps<Props>(), {
   show: false
 })
 const emit = defineEmits<{
-  ( e: 'update:show', value: boolean ): void
+  (e: 'update:show', value: boolean): void
 }>()
 
-const title = ref<string>("")
+const title = ref<string>('')
 const useTodo = useTodoStore()
 
 const handleCancel = () => {
@@ -46,10 +47,6 @@ const handleSave = () => {
 onMounted(() => {
   title.value = props.data.title
 })
-
-
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

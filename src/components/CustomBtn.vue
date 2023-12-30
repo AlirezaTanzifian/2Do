@@ -7,9 +7,7 @@
   </AButton>
 </template>
 
-
 <script setup lang="ts">
-
 interface Props {
   icon?: string
   size?: string
@@ -20,9 +18,6 @@ const props = withDefaults(defineProps<Props>(), {
   size: 'large',
   type: 'default'
 })
-
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
