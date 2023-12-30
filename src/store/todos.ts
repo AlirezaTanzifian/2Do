@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { computed, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { Todo } from '../model/todo.ts'
 
 export const useTodoStore = defineStore('todos', () => {
@@ -56,9 +56,22 @@ export const useTodoStore = defineStore('todos', () => {
     setLocalStorage()
   }
 
+  const getLocalStorage = () => {
+    if (localStorage.getItem('todos')) {
+      const localData = localStorage.getItem('todos')
+      todos.value = JSON.parse(localData as string)
+    } else {
+      setLocalStorage()
+    }
+  }
+
   const setLocalStorage = () => {
     localStorage.setItem('todos', JSON.stringify(todos.value))
   }
+
+  onMounted(() => {
+    getLocalStorage()
+  })
 
   return {
     todos,
